@@ -1,0 +1,5 @@
+.idea/
+.venv/
+data/
+results/
+config/merchants.csv
