@@ -39,7 +39,7 @@ pip install -r requirements.txt
 merchant_name,is_corporate,category
 AMAZON WEB SERVICES,3,cloud_services
 GITHUB INC,3,developer_tools
-キュービックプラザ新横浜,2,個人買い物
+まいばすけっと,2,個人買い物
 ```
 
 取引区分（is_corporate）の値：
