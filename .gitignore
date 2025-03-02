@@ -11,11 +11,15 @@ merchants/merchants.csv
 
 # サンプルデータは公開する（除外しない）
 # samples/
+!samples/
+!samples/merchants/
+!samples/merchants/*
 !samples/data/
 !samples/data/*
 
 # coerage
 .coverage
+htmlcov/
 
 # その他
 .DS_Store
