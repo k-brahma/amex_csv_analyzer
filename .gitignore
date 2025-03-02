@@ -11,6 +11,8 @@ merchants/merchants.csv
 
 # サンプルデータは公開する（除外しない）
 # samples/
+!samples/data/
+!samples/data/*
 
 # その他
 .DS_Store
