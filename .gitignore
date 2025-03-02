@@ -1,5 +1,17 @@
+# 開発環境
 .idea/
 .venv/
+__pycache__/
+*.pyc
+
+# 実データ（公開しない）
 data/
 results/
-config/merchants.csv
+merchants/merchants.csv
+
+# サンプルデータは公開する（除外しない）
+# samples/
+
+# その他
+.DS_Store
+Thumbs.db
