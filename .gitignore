@@ -14,6 +14,9 @@ merchants/merchants.csv
 !samples/data/
 !samples/data/*
 
+# coerage
+.coverage
+
 # その他
 .DS_Store
 Thumbs.db

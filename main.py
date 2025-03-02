@@ -6,20 +6,67 @@ using a merchant configuration file
 """
 
 import os
+import sys
 
 import pandas as pd
 
 from config import DATA_DIR, MERCHANT_CONFIG, MODE_TEST, RESULT_DIR, TARGET_YEAR
 
-# create DATA_DIR and RESULT_DIR if they don't exist
-os.makedirs(DATA_DIR, exist_ok=True)
-os.makedirs(RESULT_DIR, exist_ok=True)
+
+def check_production_environment():
+    """
+    本番モードで必要なディレクトリとファイルの存在を確認します。
+    問題がある場合はエラーメッセージを表示して終了します。
+    """
+    if not os.path.exists("data"):
+        print("エラー: 'data' ディレクトリが見つかりません。")
+        print(
+            "実データモードで実行するには、'data' ディレクトリを作成し、CSVファイルを配置してください。"
+        )
+        print("または、config.py の MODE_TEST = True に設定してテストモードで実行してください。")
+        return False
+
+    if not os.path.exists("merchants"):
+        print("エラー: 'merchants' ディレクトリが見つかりません。")
+        print(
+            "実データモードで実行するには、'merchants' ディレクトリを作成し、merchants.csv を配置してください。"
+        )
+        print("または、config.py の MODE_TEST = True に設定してテストモードで実行してください。")
+        return False
+
+    if not os.path.exists("merchants/merchants.csv"):
+        print("エラー: 'merchants/merchants.csv' ファイルが見つかりません。")
+        print("実データモードで実行するには、merchants.csv ファイルを作成してください。")
+        print("サンプルとして 'samples/merchants/merchants_sample.csv' を参考にしてください。")
+        print("または、config.py の MODE_TEST = True に設定してテストモードで実行してください。")
+        return False
+
+    # data ディレクトリ内にCSVファイルがあるか確認
+    csv_files = [f for f in os.listdir("data") if f.endswith(".csv")]
+    if not csv_files:
+        print("エラー: 'data' ディレクトリにCSVファイルが見つかりません。")
+        print(
+            "実データモードで実行するには、AMEXの明細CSVファイルを 'data' ディレクトリに配置してください。"
+        )
+        print("または、config.py の MODE_TEST = True に設定してテストモードで実行してください。")
+        return False
+
+    return True
+
 
 # テストモードの表示
 if MODE_TEST:
     print("※テストモードで実行しています。サンプルデータを使用します。")
 else:
     print("※実データモードで実行しています。")
+
+    # 本番モードの場合、必要なディレクトリとファイルの存在チェック
+    if not check_production_environment():
+        sys.exit(1)
+
+# create DATA_DIR and RESULT_DIR if they don't exist
+os.makedirs(DATA_DIR, exist_ok=True)
+os.makedirs(RESULT_DIR, exist_ok=True)
 
 
 def load_merchant_config():
