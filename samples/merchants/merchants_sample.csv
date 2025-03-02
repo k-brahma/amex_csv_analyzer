@@ -1,0 +1,14 @@
+merchant_name,is_corporate,category
+AMAZON WEB SERVICES,3,cloud_services
+さくらインターネット,3,cloud_services
+GITHUB INC,3,developer_tools
+WSJ/BARRONS SUBSCRIP,3,business_media
+ZOOM.US,3,business_tools
+まいばすけっと,2,食品
+セブンイレブン,2,コンビニ
+東急ストア,2,食品
+ファミリーマート,2,コンビニ
+マクドナルド,1,ファーストフード
+スターバックス,1,カフェ
+コレットマーレ　神奈川県　横浜市中区,1,いろいろ
+UBER EATS,1,フードデリバリー 
